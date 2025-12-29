@@ -6,6 +6,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { AllRepos } from "@/components/AllRepos";
 import { experience, education, profile, skills, featuredProjects } from "@/app/content";
 import { headers } from "next/headers";
+import { TimelineZigZag } from "@/components/TimelineZigZag";
 
 type Repo = {
   name: string;
@@ -211,7 +212,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      {/* ================= EXPERIENCE ================= */}
+      {/* ================= EXPERIENCE =================
       <section id="experience" className="border-t border-line">
         <Container>
           <div className="py-16 sm:py-20">
@@ -238,6 +239,24 @@ export default async function Home() {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </Container>
+      </section> */}
+
+      {/* ================= EXPERIENCE + EDUCATION ================= */}
+      <section id="experience" className="border-t border-line">
+        <Container>
+          <div className="py-16 sm:py-20">
+            <Reveal>
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                Experience & education
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm text-black/65">
+                Most recent first — with a full timeline view.
+              </p>
+            </Reveal>
+
+            <TimelineZigZag experience={experience} education={education} />
           </div>
         </Container>
       </section>

@@ -10,7 +10,7 @@ export default {
       colors: {
         ink: "#0b0c10",
         paper: "#ffffff",
-        line: "rgba(0,0,0,0.08)",
+        line: "rgba(0,0,0,0.10)",
       },
     },
   },

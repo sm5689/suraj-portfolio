@@ -85,6 +85,7 @@ export const experience = [
     company: "IpserLab LLC",
     role: "Software Engineering Intern",
     period: "Jan 2025 – Jun 2025",
+    logo: "https://media.licdn.com/dms/image/v2/C560BAQGwNqgzEwN2qQ/company-logo_200_200/company-logo_200_200/0/1631322453007?e=2147483647&v=beta&t=36qV_WG_7bTRDS82TbKOf1EjYn7HWVZasn7MuLGIDvM",
     bullets: [
       "Developed a full-stack quiz creation and lead analytics platform using React, Java, and PostgreSQL, supporting 50+ beta users across multiple organizations",
       "Improved backend performance by 30% (800ms → 560ms) through JDBC connection pooling and SQL query optimization, handling 200+ daily API requests",
@@ -94,20 +95,33 @@ export const experience = [
     ],
   },
   {
-    company: "Northeastern University",
-    role: "Graduate Teaching Assistant (Head TA), Web Development (CS5610)",
-    period: "Jun 2024 – Dec 2024, May 2025 – Dec 2025",
-    bullets: [
-      "Led instruction and mentoring for 60+ graduate students per semester in full-stack web development using React, Node.js, Express, MongoDB, HTML, CSS, and JavaScript",
-      "Increased student engagement by 30% through structured tutorials, workshops, and hands-on labs aligned with industry practices",
-      "Conducted detailed code reviews for 200+ assignments and projects, improving average student performance and code quality",
-      "Managed course communication channels and collaborated closely with faculty, reducing unresolved student queries by 40%",
-    ],
-  },
+  company: "Northeastern University",
+  role: "Graduate Teaching Assistant (Head TA), Web Development (CS5610)",
+  period: "May 2025 – Dec 2025",
+  logo: "https://brand.northeastern.edu/wp-content/uploads/2025/01/seal-wordmark-blk.svg",
+  bullets: [
+    "Led instruction and mentoring for 150+ graduate students in full-stack web development using React, Node.js, Express, MongoDB, HTML, CSS, and JavaScript",
+    "Increased student engagement by 30% through structured tutorials, workshops, and hands-on labs aligned with industry practices",
+    "Conducted detailed code reviews for 200+ assignments and projects, improving average student performance and code quality",
+    "Managed course communication channels and collaborated closely with faculty, reducing unresolved student queries by 40%",
+  ],
+},
+{
+  company: "Northeastern University",
+  role: "Graduate Teaching Assistant, Web Development (CS5610)",
+  period: "Jun 2024 – Dec 2024",
+  logo: "https://brand.northeastern.edu/wp-content/uploads/2025/01/seal-wordmark-blk.svg",
+  bullets: [
+    "Mentored students in React, Node.js, APIs, and debugging through office hours and structured guidance",
+    "Reviewed assignments and projects with feedback focused on maintainability, correctness, and clean architecture",
+    "Helped students improve project structure, state management, and API integration patterns",
+  ],
+},
   {
     company: "HighRadius",
     role: "Software / Data Intern",
     period: "Feb 2022 – May 2022",
+    logo: "https://media.zenfs.com/en/business-wire.com/a71eb02f7d15154ab98ef3a2622dbb55",
     bullets: [
       "Analyzed sales and marketing data for secure video conferencing solutions using SQL, Power BI, and Tableau to uncover customer behavior trends",
       "Built interactive dashboards visualizing tradeshow attendee data, enabling identification of high-intent prospects from 100+ leads",
@@ -119,6 +133,7 @@ export const experience = [
     company: "Internship Studio",
     role: "Web Development Intern",
     period: "Jan 2022 – Mar 2022",
+    logo: "https://cit.internshipstudio.com/assets/img/logo.png",
     bullets: [
       "Built and deployed a responsive full-stack e-commerce platform using HTML, CSS, JavaScript, React, Node.js, Express, and MySQL",
       "Developed 15+ reusable UI components and backend integrations, improving user engagement by approximately 30%",
@@ -130,6 +145,7 @@ export const experience = [
     company: "Schaeffler India",
     role: "IT Intern",
     period: "Dec 2021 – Jan 2022",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6cBYHZ0wDOpbRR1vK-0mzs_YEsI_IKxGteA&s",
     bullets: [
       "Gained exposure to enterprise IT infrastructure, including server management and internal networking systems",
       "Observed how IT operations support multiple business domains to ensure reliability and efficiency in a corporate environment",
@@ -144,6 +160,7 @@ export const education = [
     degree: "Master’s degree in Computer Science",
     location: "Boston, MA",
     period: "Sep 2023 – Dec 2025",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/bb/NU_RGB_seal_R.png",
     details: [
       "Relevant Coursework: Web Development, Program Design Paradigm, Natural Language Processing",
     ],
@@ -153,6 +170,7 @@ export const education = [
     degree: "Bachelor’s degree in Computer Science",
     location: "India",
     period: "Jul 2019 – Jun 2023",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/SRM_Institute_of_Science_and_Technology_Logo.svg/1200px-SRM_Institute_of_Science_and_Technology_Logo.svg.png",
     details: [
       "Relevant Coursework: Data Structures and Algorithms, Artificial Intelligence, Object-Oriented Programming, DBMS",
     ],

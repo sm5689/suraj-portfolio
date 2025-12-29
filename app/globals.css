@@ -3,6 +3,7 @@
 :root {
   --bg: #ffffff;
   --fg: #0b0c10;
+  --line: rgba(0, 0, 0, 0.10);
 }
 
 html, body {
