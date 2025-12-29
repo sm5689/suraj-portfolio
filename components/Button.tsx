@@ -10,18 +10,32 @@ export function Button({
   variant?: "solid" | "ghost";
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20";
+    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition focus:outline-none focus-visible:ring-2";
 
-  const solid =
-    "bg-black text-white hover:bg-black/90 active:bg-black";
-
-  const ghost =
-    "border border-black/15 bg-white text-black hover:bg-black/5 active:bg-black/10";
+  if (variant === "solid") {
+    return (
+      <Link
+        href={href}
+        className={base}
+        style={{
+          backgroundColor: 'rgb(var(--fg))',
+          color: 'rgb(var(--bg))',
+        }}
+      >
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <Link
       href={href}
-      className={`${base} ${variant === "solid" ? solid : ghost}`}
+      className={`${base} border hover:opacity-80`}
+      style={{
+        borderColor: 'var(--line-color)',
+        color: 'rgb(var(--fg))',
+        backgroundColor: 'transparent',
+      }}
     >
       {children}
     </Link>

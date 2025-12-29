@@ -176,7 +176,13 @@ export function TimelineZigZag({
         - Mobile: left aligned (so it looks like a proper timeline)
         - Desktop+: centered (for zig-zag)
       */}
-      <div className="absolute left-4 top-0 h-full w-px bg-black/10 sm:left-1/2 sm:-translate-x-1/2" />
+      <div
+        className="absolute left-4 top-0 h-full sm:left-1/2 sm:-translate-x-1/2"
+        style={{
+          width: '2px',
+          backgroundColor: 'var(--line-color)'
+        }}
+      />
 
       <div className="space-y-10">
         {all.map((item, idx) => {
@@ -188,16 +194,15 @@ export function TimelineZigZag({
               <div className="relative sm:grid sm:grid-cols-2 sm:gap-10">
                 {/* Desktop spacer column to allow alternation */}
                 <div
-                  className={`hidden sm:block ${
-                    right ? "sm:order-1" : "sm:order-2"
-                  }`}
+                  className={`hidden sm:block ${right ? "sm:order-1" : "sm:order-2"
+                    }`}
                 />
 
                 {/* Card column */}
                 <div className={`${right ? "sm:order-2" : "sm:order-1"}`}>
                   <div
                     className={[
-                      "relative rounded-2xl border border-line bg-white p-5",
+                      "relative rounded-2xl border border-line bg-white p-5 dark:bg-white/5",
                       // Mobile: indent from the left timeline
                       "ml-10",
                       // Desktop: reset mobile indent, then offset based on side
@@ -207,32 +212,32 @@ export function TimelineZigZag({
                   >
                     <div className="flex flex-wrap items-start justify-between gap-2">
                       <div>
-                        <p className="text-xs font-medium text-black/60">
+                        <p className="text-xs font-medium text-muted">
                           {item.kind}
                         </p>
 
-                        <h3 className="mt-1 text-base font-semibold">
+                        <h3 className="mt-1 text-base font-semibold text-fg">
                           {item.title}
                         </h3>
 
                         {item.subtitle ? (
-                          <p className="mt-1 text-sm text-black/70">
+                          <p className="mt-1 text-sm text-muted">
                             {item.subtitle}
                           </p>
                         ) : null}
 
-                        <p className="mt-1 text-sm text-black/60">
+                        <p className="mt-1 text-sm text-muted">
                           {item.period}
                         </p>
                       </div>
 
-                      <span className="rounded-full border border-line bg-white px-3 py-1 text-xs text-black/60">
+                      <span className="rounded-full border border-line bg-white px-3 py-1 text-xs text-muted dark:bg-white/10">
                         {item.metaRight}
                       </span>
                     </div>
 
                     {item.bullets?.length ? (
-                      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-black/70">
+                      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted">
                         {item.bullets.map((b) => (
                           <li key={b}>{b}</li>
                         ))}
@@ -244,7 +249,7 @@ export function TimelineZigZag({
                 {/* Timeline node (logo) */}
                 <div className="absolute left-4 top-5 -translate-x-1/2 sm:left-1/2 sm:top-6 sm:-translate-x-1/2">
                   <div className="flex items-center justify-center">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white shadow-sm sm:h-12 sm:w-12">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white shadow-sm sm:h-12 sm:w-12 dark:border-white/10 dark:bg-white/10">
                       <img
                         src={item.logo}
                         alt={`${item.title} logo`}

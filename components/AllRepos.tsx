@@ -40,7 +40,7 @@ export function AllRepos({
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="group inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-sm text-black/70 transition hover:bg-black/[0.03]"
+          className="group inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-sm text-muted transition hover:bg-black/[0.03] dark:bg-white/10 dark:hover:bg-white/15"
         >
           <span>{open ? "Hide repositories" : "More repositories"}</span>
           <span className="transition group-hover:translate-x-0.5">
@@ -56,7 +56,7 @@ export function AllRepos({
             <h3 className="text-lg font-semibold tracking-tight">
               Other repositories
             </h3>
-            <p className="mt-1 max-w-2xl text-sm text-black/65">
+            <p className="mt-1 max-w-2xl text-sm text-muted">
               Full GitHub activity (auto-fetched). Featured projects remain
               curated above.
             </p>

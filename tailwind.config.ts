@@ -10,9 +10,14 @@ export default {
       colors: {
         ink: "#0b0c10",
         paper: "#ffffff",
-        line: "rgba(0,0,0,0.10)",
+        bg: "rgb(var(--bg))",
+        fg: "rgb(var(--fg))",
+        card: "rgb(var(--card))",
+        line: "rgb(var(--border))",
+        muted: "rgb(var(--muted))",
       },
     },
   },
   plugins: [],
+  darkMode: "class",
 } satisfies Config;

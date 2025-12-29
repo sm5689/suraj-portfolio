@@ -1,22 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --fg: #0b0c10;
-  --line: rgba(0, 0, 0, 0.10);
+  --bg: 255 255 255;
+  --fg: 17 17 17;
+  --card: 255 255 255;
+  --border: 0 0 0 / 0.1;
+  --muted: 0 0 0 / 0.6;
+  --line-color: rgba(0, 0, 0, 0.3);
 }
 
-html, body {
+.dark {
+  --bg: 17 17 17;
+  --fg: 255 255 255;
+  --card: 255 255 255 / 0.05;
+  --border: 255 255 255 / 0.12;
+  --muted: 255 255 255 / 0.6;
+  --line-color: rgba(255, 255, 255, 0.3);
+}
+
+html,
+body {
   height: 100%;
 }
 
 body {
-  color: var(--fg);
-  background: var(--bg);
+  color: rgb(var(--fg));
+  background: rgb(var(--bg));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: rgba(0,0,0,0.08);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.dark ::selection {
+  background: rgba(255, 255, 255, 0.2);
 }

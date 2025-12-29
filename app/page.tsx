@@ -71,27 +71,27 @@ export default async function Home() {
   const featuredRepoNames = featured.map((r) => r.name);
 
   return (
-    <div className="min-h-screen bg-paper text-ink">
+    <div className="min-h-screen bg-bg text-fg">
       <Nav />
 
       {/* ================= HERO ================= */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-black/[0.04] blur-3xl" />
-          <div className="absolute -bottom-56 right-0 h-[520px] w-[520px] rounded-full bg-black/[0.03] blur-3xl" />
+          <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-black/[0.04] blur-3xl dark:bg-white/[0.04]" />
+          <div className="absolute -bottom-56 right-0 h-[520px] w-[520px] rounded-full bg-black/[0.03] blur-3xl dark:bg-white/[0.03]" />
         </div>
 
         <Container>
           <div className="relative py-16 sm:py-24">
             <div className="grid items-center gap-10 sm:grid-cols-[1.2fr_0.8fr]">
               <Reveal>
-                <p className="text-sm text-black/60">{profile.location}</p>
+                <p className="text-sm text-muted">{profile.location}</p>
 
                 <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">
                   {profile.headline}
                 </h1>
 
-                <p className="mt-4 max-w-2xl text-base text-black/70 sm:text-lg">
+                <p className="mt-4 max-w-2xl text-base sm:text-lg text-muted">
                   {profile.subheadline}
                 </p>
 
@@ -104,20 +104,20 @@ export default async function Home() {
                   </Button>
                 </div>
 
-                <div className="mt-10 flex flex-wrap gap-2 text-xs text-black/60">
-                  <span className="rounded-full border border-line bg-white/70 px-3 py-1">
+                <div className="mt-10 flex flex-wrap gap-2 text-xs text-muted">
+                  <span className="rounded-full border border-line bg-white/70 px-3 py-1 dark:bg-white/10">
                     Northeastern University
                   </span>
-                  <span className="rounded-full border border-line bg-white/70 px-3 py-1">
+                  <span className="rounded-full border border-line bg-white/70 px-3 py-1 dark:bg-white/10">
                     Software Engineer
                   </span>
-                  <span className="rounded-full border border-line bg-white/70 px-3 py-1">
+                  <span className="rounded-full border border-line bg-white/70 px-3 py-1 dark:bg-white/10">
                     Graduate TA ×2
                   </span>
-                  <span className="rounded-full border border-line bg-white/70 px-3 py-1">
+                  <span className="rounded-full border border-line bg-white/70 px-3 py-1 dark:bg-white/10">
                     Algorithms + Data Structures
                   </span>
-                  <span className="rounded-full border border-line bg-white/70 px-3 py-1">
+                  <span className="rounded-full border border-line bg-white/70 px-3 py-1 dark:bg-white/10">
                     LLD + System Design
                   </span>
                 </div>
@@ -125,13 +125,13 @@ export default async function Home() {
 
               <Reveal delay={0.05}>
                 <div className="flex justify-start sm:justify-end">
-                  <div className="relative h-56 w-56 overflow-hidden rounded-full border border-black/10 bg-black/[0.02] shadow-sm sm:h-56 sm:w-56">
+                  <div className="relative h-56 w-56 overflow-hidden rounded-full border border-black/10 bg-black/[0.02] shadow-sm sm:h-56 sm:w-56 dark:border-white/10 dark:bg-white/[0.02]">
                     <img
                       src={profile.photo ?? "/me.jpg"}
                       alt={`${profile.name} portrait`}
                       className="h-full w-full object-cover object-[center_18%] scale-110"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/20 to-transparent dark:from-black/20" />
                   </div>
                 </div>
               </Reveal>
@@ -148,7 +148,7 @@ export default async function Home() {
               <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
                 Featured projects
               </h2>
-              <p className="mt-2 max-w-2xl text-sm text-black/65">
+              <p className="mt-2 max-w-2xl text-sm text-muted">
                 Curated for signal: systems, performance, and clean engineering.
               </p>
             </Reveal>
@@ -156,7 +156,7 @@ export default async function Home() {
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {featured.length === 0 ? (
                 <Reveal>
-                  <div className="rounded-2xl border border-line bg-white p-5 text-sm text-black/70">
+                  <div className="rounded-2xl border border-line bg-white p-5 text-sm text-muted dark:bg-white/5">
                     Loading projects… (Add a GitHub token to avoid rate limits.)
                   </div>
                 </Reveal>
@@ -201,9 +201,9 @@ export default async function Home() {
                 },
               ].map((item, i) => (
                 <Reveal key={item.title} delay={i * 0.05}>
-                  <div className="rounded-2xl border border-line bg-white p-5">
-                    <h3 className="text-base font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-sm text-black/65">{item.body}</p>
+                  <div className="rounded-2xl border border-line bg-white p-5 dark:bg-white/5">
+                    <h3 className="text-base font-semibold text-fg">{item.title}</h3>
+                    <p className="mt-2 text-sm text-muted">{item.body}</p>
                   </div>
                 </Reveal>
               ))}
@@ -251,7 +251,7 @@ export default async function Home() {
               <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
                 Experience & education
               </h2>
-              <p className="mt-2 max-w-2xl text-sm text-black/65">
+              <p className="mt-2 max-w-2xl text-sm text-muted">
                 Most recent first - with a full timeline view.
               </p>
             </Reveal>
@@ -274,13 +274,13 @@ export default async function Home() {
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {Object.entries(skills).map(([group, items], i) => (
                 <Reveal key={group} delay={i * 0.05}>
-                  <div className="rounded-2xl border border-line bg-white p-5">
-                    <h3 className="text-sm font-semibold">{group}</h3>
+                  <div className="rounded-2xl border border-line bg-white p-5 dark:bg-white/5">
+                    <h3 className="text-sm font-semibold text-fg">{group}</h3>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {items.map((skill) => (
                         <span
                           key={skill}
-                          className="rounded-full border border-line px-3 py-1 text-xs text-black/70"
+                          className="rounded-full border border-line px-3 py-1 text-xs text-muted"
                         >
                           {skill}
                         </span>
@@ -303,15 +303,15 @@ export default async function Home() {
                 Let’s connect
               </h2>
 
-              <p className="mt-2 text-sm text-black/65">
+              <p className="mt-2 text-sm text-muted">
                 Open to full-time software engineering roles.
               </p>
 
-              <p className="mt-4 text-sm text-black/80">
+              <p className="mt-4 text-sm text-fg">
                 Email:&nbsp;
                 <a
                   href={`mailto:${profile.email}`}
-                  className="font-medium underline underline-offset-4 hover:text-black"
+                  className="font-medium underline underline-offset-4 hover:opacity-70"
                 >
                   {profile.email}
                 </a>
@@ -329,7 +329,7 @@ export default async function Home() {
                 </Button>
               </div>
 
-              <p className="mt-10 text-xs text-black/50">
+              <p className="mt-10 text-xs text-muted">
                 © {new Date().getFullYear()} {profile.name}
               </p>
             </Reveal>
