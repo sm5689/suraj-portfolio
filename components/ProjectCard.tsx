@@ -30,7 +30,7 @@ export function ProjectCard({ repo }: { repo: Project }) {
           </p>
         </div>
         <span className="shrink-0 rounded-full border border-line px-2 py-1 text-xs text-black/60">
-          {repo.language ?? "—"}
+          {repo.language ?? "-"}
         </span>
       </div>
 

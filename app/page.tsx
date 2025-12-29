@@ -252,7 +252,7 @@ export default async function Home() {
                 Experience & education
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-black/65">
-                Most recent first — with a full timeline view.
+                Most recent first - with a full timeline view.
               </p>
             </Reveal>
 
