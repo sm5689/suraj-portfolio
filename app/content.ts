@@ -82,6 +82,32 @@ export const featuredProjects = [
 
 export const experience = [
   {
+    company: "Threadwire LLC",
+    role: "Full-Stack Developer",
+    period: "Dec 2025 – Present",
+    logo: "",
+    bullets: [
+      "Built an enterprise AI-powered manufacturing intelligence platform using React 19, Node.js/Express, and MongoDB, enabling end-to-end product traceability across PLM, ERP, and MES systems for manufacturing clients",
+      "Architected and implemented a RAG-based AI chatbot using LangChain, OpenAI embeddings, and Pinecone vector database, allowing natural language queries across sales orders, work orders, inventory, and risk data with real-time context awareness",
+      "Designed multi-tenant SaaS architecture with secure customer data isolation, JWT/OAuth 2.0 authentication, scope-based API authorization, and MongoDB Change Streams for real-time data synchronization",
+      "Developed interactive D3.js graph visualization for digital thread exploration, enabling users to trace complex relationships between products, orders, BOMs, and blockers across the manufacturing lifecycle",
+      "Deployed and maintained production environment on AWS with PM2 process management, comprehensive API analytics, and enterprise integrations (SAP, Oracle, Salesforce)",
+    ],
+  },
+  {
+    company: "Auveria LLC",
+    role: "Software Engineer",
+    period: "Oct 2025 – Present",
+    logo: "",
+    bullets: [
+      "Architected and deployed a full-stack Next.js application on AWS EC2, integrating OpenAI GPT-4 API to generate 10+ slide types including market analysis, financial projections, and competitive positioning",
+      "Reduced presentation generation time by 80% (4+ minutes to 50 seconds) by implementing parallel slide generation using Promise.all() for concurrent API calls",
+      "Built PDF export pipeline using Puppeteer headless browser to capture pixel-perfect slide replicas with embedded Recharts visualizations",
+      "Designed MongoDB data persistence layer with Mongoose ODM, resolving critical database connectivity issues and ensuring reliable data storage",
+      "Implemented Google OAuth authentication flow with JWT token management for secure user sessions",
+    ],
+  },
+  {
     company: "IpserLab LLC",
     role: "Software Engineering Intern",
     period: "Jan 2025 – Jun 2025",
@@ -95,28 +121,28 @@ export const experience = [
     ],
   },
   {
-  company: "Northeastern University",
-  role: "Graduate Teaching Assistant (Head TA), Web Development (CS5610)",
-  period: "May 2025 – Dec 2025",
-  logo: "https://brand.northeastern.edu/wp-content/uploads/2025/01/seal-wordmark-blk.svg",
-  bullets: [
-    "Led instruction and mentoring for 150+ graduate students in full-stack web development using React, Node.js, Express, MongoDB, HTML, CSS, and JavaScript",
-    "Increased student engagement by 30% through structured tutorials, workshops, and hands-on labs aligned with industry practices",
-    "Conducted detailed code reviews for 200+ assignments and projects, improving average student performance and code quality",
-    "Managed course communication channels and collaborated closely with faculty, reducing unresolved student queries by 40%",
-  ],
-},
-{
-  company: "Northeastern University",
-  role: "Graduate Teaching Assistant, Web Development (CS5610)",
-  period: "Jun 2024 – Dec 2024",
-  logo: "https://brand.northeastern.edu/wp-content/uploads/2025/01/seal-wordmark-blk.svg",
-  bullets: [
-    "Mentored students in React, Node.js, APIs, and debugging through office hours and structured guidance",
-    "Reviewed assignments and projects with feedback focused on maintainability, correctness, and clean architecture",
-    "Helped students improve project structure, state management, and API integration patterns",
-  ],
-},
+    company: "Northeastern University",
+    role: "Graduate Teaching Assistant (Head TA), Web Development (CS5610)",
+    period: "May 2025 – Dec 2025",
+    logo: "https://brand.northeastern.edu/wp-content/uploads/2025/01/seal-wordmark-blk.svg",
+    bullets: [
+      "Led instruction and mentoring for 150+ graduate students in full-stack web development using React, Node.js, Express, MongoDB, HTML, CSS, and JavaScript",
+      "Increased student engagement by 30% through structured tutorials, workshops, and hands-on labs aligned with industry practices",
+      "Conducted detailed code reviews for 200+ assignments and projects, improving average student performance and code quality",
+      "Managed course communication channels and collaborated closely with faculty, reducing unresolved student queries by 40%",
+    ],
+  },
+  {
+    company: "Northeastern University",
+    role: "Graduate Teaching Assistant, Web Development (CS5610)",
+    period: "Jun 2024 – Dec 2024",
+    logo: "https://brand.northeastern.edu/wp-content/uploads/2025/01/seal-wordmark-blk.svg",
+    bullets: [
+      "Mentored students in React, Node.js, APIs, and debugging through office hours and structured guidance",
+      "Reviewed assignments and projects with feedback focused on maintainability, correctness, and clean architecture",
+      "Helped students improve project structure, state management, and API integration patterns",
+    ],
+  },
   {
     company: "HighRadius",
     role: "Software / Data Intern",
