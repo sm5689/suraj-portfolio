@@ -1,55 +1,55 @@
-import Link from "next/link";
+import type { Project } from "@/app/content";
+import type { RepoLinks } from "@/lib/github";
+import { ArrowUpRight, GitHub, Star } from "@/components/Icons";
 
-type Project = {
-  name: string;
-  display_name?: string;
-  display_description?: string;
-  html_url: string;
-  homepage: string | null;
-  stargazers_count: number;
-  forks_count: number;
-  language: string | null;
-  updated_at: string;
-};
-
-export function ProjectCard({ repo }: { repo: Project }) {
-  const updated = new Date(repo.updated_at).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-  });
+export function ProjectCard({ project, links }: { project: Project; links: RepoLinks }) {
+  const stars = links.meta?.stars ?? 0;
 
   return (
-    <div className="group rounded-2xl border border-line bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:bg-white/5 dark:hover:shadow-[0_10px_30px_rgba(255,255,255,0.03)]">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h3 className="text-base font-semibold tracking-tight text-fg">
-            {repo.display_name ?? repo.name}
-          </h3>
-          <p className="mt-1 text-sm text-muted">
-            {repo.display_description ?? "No description yet."}
-          </p>
-        </div>
-        <span className="shrink-0 rounded-full border border-line px-2 py-1 text-xs text-muted">
-          {repo.language ?? "-"}
-        </span>
-      </div>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-muted">
-        <span className="rounded-full border border-line px-2 py-1">★ {repo.stargazers_count}</span>
-        <span className="rounded-full border border-line px-2 py-1">⑂ {repo.forks_count}</span>
-        <span className="rounded-full border border-line px-2 py-1">Updated {updated}</span>
-      </div>
-
-      <div className="mt-4 flex gap-3 text-sm">
-        <Link className="text-fg underline-offset-4 hover:underline" href={repo.html_url}>
-          GitHub
-        </Link>
-        {repo.homepage ? (
-          <Link className="text-fg underline-offset-4 hover:underline" href={repo.homepage}>
-            Live
-          </Link>
+    <article className="reveal flex h-full flex-col rounded-2xl border border-line bg-card p-6 transition-colors duration-200 hover:border-line-strong hover:bg-card-hover">
+      <div className="flex items-center justify-between gap-3 font-mono text-xs text-muted">
+        <span>{project.year}</span>
+        {stars > 0 ? (
+          <span className="inline-flex items-center gap-1" aria-label={`${stars} GitHub ${stars === 1 ? "star" : "stars"}`}>
+            <Star className="size-3.5" /> {stars}
+          </span>
         ) : null}
       </div>
-    </div>
+
+      <h3 className="mt-3 text-lg font-semibold tracking-tight">{project.title}</h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-pretty text-muted">{project.summary}</p>
+
+      <ul aria-label="Tech stack" className="mt-5 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-muted">
+        {project.tags.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+
+      <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-4 text-sm">
+        {links.repoUrl ? (
+          <a
+            href={links.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} source code on GitHub`}
+            className="inline-flex items-center gap-1.5 font-medium text-fg transition-opacity hover:opacity-70"
+          >
+            <GitHub className="size-4" /> Code
+          </a>
+        ) : null}
+        {links.liveUrl ? (
+          <a
+            href={links.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} live demo`}
+            className="inline-flex items-center gap-1 font-medium text-fg transition-opacity hover:opacity-70"
+          >
+            Live demo <ArrowUpRight className="size-3.5" />
+          </a>
+        ) : null}
+        {project.note ? <span className="text-xs text-muted">{project.note}</span> : null}
+      </div>
+    </article>
   );
 }

@@ -1,39 +1,152 @@
 @import "tailwindcss";
 
+/* `dark:` follows the .dark class set by next-themes, not the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --bg: 255 255 255;
-  --fg: 17 17 17;
-  --card: 255 255 255;
-  --border: 0 0 0 / 0.1;
-  --muted: 0 0 0 / 0.6;
-  --line-color: rgba(0, 0, 0, 0.3);
+  --bg: #fbfbfa;
+  --fg: #0d0d0f;
+  --muted: #5b5b63;
+  --subtle: #8b8b94;
+  --line: #e6e6e3;
+  --line-strong: #d4d4d0;
+  --card: #ffffff;
+  --card-hover: #f6f6f4;
+  --accent: #047857;
+  --accent-soft: #ecfdf5;
+  --live: #10b981;
+  color-scheme: light;
 }
 
 .dark {
-  --bg: 17 17 17;
-  --fg: 255 255 255;
-  --card: 255 255 255 / 0.05;
-  --border: 255 255 255 / 0.12;
-  --muted: 255 255 255 / 0.6;
-  --line-color: rgba(255, 255, 255, 0.3);
+  --bg: #0a0a0b;
+  --fg: #ededef;
+  --muted: #a1a1aa;
+  --subtle: #71717a;
+  --line: #222225;
+  --line-strong: #2e2e33;
+  --card: #111113;
+  --card-hover: #17171a;
+  --accent: #34d399;
+  --accent-soft: #052e22;
+  --live: #34d399;
+  color-scheme: dark;
 }
 
-html,
-body {
-  height: 100%;
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-live: var(--live);
 }
 
-body {
-  color: rgb(var(--fg));
-  background: rgb(var(--bg));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Leave room for the sticky header when jumping to a section. */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
-::selection {
-  background: rgba(0, 0, 0, 0.15);
+/* Faint grid behind the hero, faded out with a radial mask. */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
 }
 
-.dark ::selection {
-  background: rgba(255, 255, 255, 0.2);
+/* Native <details> disclosure: hide the default marker, swap the label when open. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] > summary .when-closed,
+details:not([open]) > summary .when-open {
+  display: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero content animates on load, staggered by --i. */
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  .pulse-ring {
+    animation: pulse-ring 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  /* Scroll-driven reveal: no JavaScript, and content stays visible wherever
+     view timelines aren't supported. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
 }

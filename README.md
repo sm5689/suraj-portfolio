@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# suraj-world
 
-## Getting Started
+Personal portfolio of **Suraj Mishra**, a software engineer building AI products and the systems beneath them.
 
-First, run the development server:
+**Live:** [suraj-world.vercel.app](https://suraj-world.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- **Next.js 16** (App Router, React Server Components), **React 19**, **TypeScript**
+- **Tailwind CSS v4** with CSS-variable design tokens and class-based dark mode
+- **next/font** (Geist Sans + Geist Mono), **next/image** (AVIF/WebP)
+- **next/og** for the generated social preview card and favicons
+- Vercel Analytics + Speed Insights
+
+## Highlights
+
+- **Static + ISR.** The page is prerendered and revalidated every 6 hours. GitHub data (stars, live links) is fetched server-side in a single paginated request, so visitors never hit the GitHub API or its rate limits.
+- **Graceful fallbacks.** If GitHub is unreachable, cards still render from local content. If a repo becomes private or is deleted, its link is dropped instead of pointing to a 404. Broken logos fall back to initials.
+- **Zero-JS motion.** Scroll reveals use CSS scroll-driven animations (`animation-timeline: view()`), are disabled under `prefers-reduced-motion`, and content stays visible in browsers without support.
+- **⌘K command menu** built on the native `<dialog>` element, with a full ARIA combobox/listbox pattern and keyboard navigation.
+- **Accessible by default.** Skip link, semantic landmarks, visible focus rings, `aria-current` section tracking, AA-contrast color tokens, and native `<details>` disclosures.
+- **SEO.** Generated Open Graph image, JSON-LD `Person` schema, sitemap, robots, web manifest, and canonical URL.
+
+## Project structure
+
+```
+app/
+  content.ts            ← all site copy and data (edit this to update the site)
+  page.tsx              ← page composition
+  layout.tsx            ← fonts, metadata, JSON-LD, theme provider
+  globals.css           ← design tokens, dark mode, animations
+  opengraph-image.tsx   ← generated 1200×630 social card
+  icon.tsx, apple-icon.tsx, sitemap.ts, robots.ts, manifest.ts, not-found.tsx
+components/
+  CaseStudy.tsx         ← featured project with metrics + pipeline diagram
+  ProjectCard.tsx, Experience.tsx, Nav.tsx, CommandMenu.tsx, ...
+  ui.tsx                ← Container, Section, Button, Chip, Reveal primitives
+lib/
+  github.ts             ← cached GitHub enrichment
+public/
+  me.jpg, me-square.jpg, Suraj_Mishra_Resume.pdf
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Updating content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Everything visible on the site lives in [`app/content.ts`](app/content.ts):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `caseStudies`: the four featured projects (summary, highlights, metrics, stack, pipeline steps)
+- `projects`: the project grid. Set `repo` to the GitHub repo name to get live links and stars.
+- `experience`, `earlierExperience`, `education`, `skills`, `stats`
 
-## Learn More
+To replace the résumé, overwrite `public/Suraj_Mishra_Resume.pdf` (the US version, linked from the site). The old `/resume.pdf` URL redirects to it, so previously shared links keep working.
 
-To learn more about Next.js, take a look at the following resources:
+## Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Environment variables
 
-## Deploy on Vercel
+| Variable       | Required | Purpose                                                        |
+| -------------- | -------- | -------------------------------------------------------------- |
+| `GITHUB_TOKEN` | No       | Raises the GitHub API rate limit during builds and revalidation. A fine-grained token with no scopes is enough. |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel. Pushing to `main` triggers a production deploy. Enable **Analytics** and **Speed Insights** in the Vercel project settings to start collecting data.
