@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { RevealObserver } from "@/components/RevealObserver";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { education, profile, site } from "@/app/content";
 import "./globals.css";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <ThemeProvider>{children}</ThemeProvider>
+        <RevealObserver />
         <script
           type="application/ld+json"
           // Escape "<" so the JSON can never close the script tag early.

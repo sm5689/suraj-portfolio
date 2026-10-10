@@ -16,7 +16,7 @@ Personal portfolio of **Suraj Mishra**, a software engineer building AI products
 
 - **Static + ISR.** The page is prerendered and revalidated every 6 hours. GitHub data (stars, live links) is fetched server-side in a single paginated request, so visitors never hit the GitHub API or its rate limits.
 - **Graceful fallbacks.** If GitHub is unreachable, cards still render from local content. If a repo becomes private or is deleted, its link is dropped instead of pointing to a 404. Broken logos fall back to initials.
-- **Zero-JS motion.** Scroll reveals use CSS scroll-driven animations (`animation-timeline: view()`), are disabled under `prefers-reduced-motion`, and content stays visible in browsers without support.
+- **Scroll reveals.** Sections fade and rise once as they enter the viewport, with a stagger across rows of cards. A single IntersectionObserver drives it (no animation library), it's skipped under `prefers-reduced-motion`, and content is never hidden without JavaScript.
 - **⌘K command menu** built on the native `<dialog>` element, with a full ARIA combobox/listbox pattern and keyboard navigation.
 - **Accessible by default.** Skip link, semantic landmarks, visible focus rings, `aria-current` section tracking, AA-contrast color tokens, and native `<details>` disclosures.
 - **SEO.** Generated Open Graph image, JSON-LD `Person` schema, sitemap, robots, web manifest, and canonical URL.

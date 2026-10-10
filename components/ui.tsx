@@ -8,7 +8,7 @@ export function Container({ children, className }: { children: ReactNode; classN
   return <div className={cn("mx-auto w-full max-w-6xl px-5 sm:px-8", className)}>{children}</div>;
 }
 
-/** Fades content in as it scrolls into view (pure CSS, see globals.css). */
+/** Fades content in once as it scrolls into view (see RevealObserver). */
 export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   return <div className={cn("reveal", className)}>{children}</div>;
 }
